@@ -29,14 +29,13 @@ def handle_messages(update, context):
 
 
 def datetime_from_utc_to_local(utc_datetime):
-
     utc = datetime.strptime(utc_datetime, "%Y-%m-%dT%H:%M:%S.%fZ")
-
-    return utc
+    epoch = time.mktime(utc.timetuple())
+    offset = datetime.fromtimestamp(epoch) - datetime.utcfromtimestamp(epoch)
+    return utc + offset
 
 
 def codeforces(update, context):
-    update.message.reply_text("s")
     response = requests.get('https://kontests.net/api/v1/codeforces.json')
     data = response.json()
     info = ""
