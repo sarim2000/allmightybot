@@ -1,6 +1,5 @@
-import os
 
-from dateutil import tz
+
 import time
 from datetime import datetime
 import logging
@@ -30,12 +29,10 @@ def handle_messages(update, context):
 
 
 def datetime_from_utc_to_local(utc_datetime):
-    from_zone = tz.tzutc()
-    to_zone = tz.tzlocal()
+
     utc = datetime.strptime(utc_datetime, "%Y-%m-%dT%H:%M:%S.%fZ")
-    utc = utc.replace(tzinfo=from_zone)
-    central = utc.astimezone(to_zone)
-    return central
+
+    return utc
 
 
 def codeforces(update, context):
