@@ -30,9 +30,7 @@ def handle_messages(update, context):
 
 def datetime_from_utc_to_local(utc_datetime):
     utc = datetime.strptime(utc_datetime, "%Y-%m-%dT%H:%M:%S.%fZ")
-    epoch = time.mktime(utc.timetuple())
-    offset = datetime.fromtimestamp(epoch) - datetime.utcfromtimestamp(epoch)
-    return utc.astimezone(datetime.timezone(offset))
+    return utc
 
 
 def codeforces(update, context):
