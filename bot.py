@@ -5,7 +5,6 @@ import logging
 import json
 import Constants as keys
 from telegram.ext import *
-import Responses as R
 import requests
 print('Bot started')
 
@@ -38,6 +37,7 @@ def datetime_from_utc_to_local(utc_datetime):
 
 
 def codeforces(update, context):
+    update.message.reply_text("s")
     response = requests.get('https://kontests.net/api/v1/codeforces.json')
     data = response.json()
     info = ""
@@ -132,6 +132,7 @@ def all_contest(update, context):
                     "code_chef", "leet_code", "kick_start"]
     for i in contest_name:
         info = ""
+
         response = requests.get('https://kontests.net/api/v1/'+i+".json")
         data = response.json()
         for x in data:
@@ -162,6 +163,7 @@ def main():
     dp.add_handler(CommandHandler("hackerearth", hackerearth))
     dp.add_handler(CommandHandler("kickstart", kickstart))
     dp.add_handler(CommandHandler("all", all_contest))
+    dp.add_handler(CommandHandler("leetcode", leetcode))
 
     dp.add_error_handler(error_handler)
     updater.start_polling()
