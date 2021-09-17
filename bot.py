@@ -1,3 +1,5 @@
+import os
+
 from dateutil import tz
 import time
 from datetime import datetime
@@ -7,6 +9,8 @@ import Constants as keys
 from telegram.ext import *
 import requests
 print('Bot started')
+
+PORT = int(os.environ.get('PORT', 5000))
 
 
 def start_command(update, context):
@@ -166,8 +170,13 @@ def main():
     dp.add_handler(CommandHandler("leetcode", leetcode))
 
     dp.add_error_handler(error_handler)
-    updater.start_polling()
+    updater.start_webhook(listen="0.0.0.0")
+    port = int(PORT)
+    url_path = (keys.API_KEY)
+    updater.bot.setWebhook(
+        "https://secure-everglades-54597.herokuapp.com/"+keys.API_KEY)
     updater.idle()
 
 
-main()
+if (__name__) == '__main__':
+    main()
