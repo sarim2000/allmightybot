@@ -1,8 +1,6 @@
-python == 3.8.10
-pip == 20.0.2
 appdirs==1.4.3
 APScheduler==3.6.3
-apturl==0.5.2
+apturl
 autopep8==1.5.7
 backports.zoneinfo==0.2.1
 bcrypt==3.1.7
