@@ -10,8 +10,6 @@ from telegram.ext import *
 import requests
 print('Bot started')
 
-PORT = int(os.environ.get('PORT', 5000))
-
 
 def start_command(update, context):
     update.message.reply_text("Type")
@@ -170,13 +168,8 @@ def main():
     dp.add_handler(CommandHandler("leetcode", leetcode))
 
     dp.add_error_handler(error_handler)
-    updater.start_webhook(listen="0.0.0.0")
-    port = int(PORT)
-    url_path = (keys.API_KEY)
-    updater.bot.setWebhook(
-        "https://secure-everglades-54597.herokuapp.com/"+keys.API_KEY)
+    updater.start_polling()
     updater.idle()
 
 
-if (__name__) == '__main__':
-    main()
+main()
