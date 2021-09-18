@@ -56,10 +56,11 @@ def codechef(update, context):
         start = x["start_time"]
         end = x["end_time"]
         d1 = datetime_from_utc_to_local(start)
-        d2 = datetime_from_utc_to_local(end)
+        d4 = utc2local(start)
+        d2 = utc2local(end)
         new_format = "%Y-%m-%d"
-        info += (x["name"]+"\nStart: "+str(d1) +
-                 "\nEnd: "+str(d2)+"\nRegister: "+x["url"] + "\n\n")
+        info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
+                 "\nEnd: "+str(d2)+"hr\n")
     update.message.reply_text(info)
 
 
@@ -71,10 +72,11 @@ def leetcode(update, context):
         start = x["start_time"]
         end = x["end_time"]
         d1 = datetime_from_utc_to_local(start)
-        d2 = datetime_from_utc_to_local(end)
+        d4 = utc2local(start)
+        d2 = utc2local(end)
         new_format = "%Y-%m-%d"
-        info += (x["name"]+"\nStart: "+str(d1) +
-                 "\nEnd: "+str(d2)+"\nRegister: "+x["url"] + "\n\n")
+        info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
+                 "\nEnd: "+str(d2)+"hr\n")
     update.message.reply_text(info)
 
 
@@ -86,10 +88,11 @@ def kickstart(update, context):
         start = x["start_time"]
         end = x["end_time"]
         d1 = datetime_from_utc_to_local(start)
-        d2 = datetime_from_utc_to_local(end)
+        d4 = utc2local(start)
+        d2 = utc2local(end)
         new_format = "%Y-%m-%d"
-        info += (x["name"]+"\nStart: "+str(d1) +
-                 "\nEnd: "+str(d2)+"\nRegister: "+x["url"] + "\n\n")
+        info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
+                 "\nEnd: "+str(d2)+"hr\n")
     update.message.reply_text(info)
 
 
@@ -101,10 +104,11 @@ def atcoder(update, context):
         start = x["start_time"]
         end = x["end_time"]
         d1 = datetime_from_utc_to_local(start)
-        d2 = datetime_from_utc_to_local(end)
+        d4 = utc2local(start)
+        d2 = utc2local(end)
         new_format = "%Y-%m-%d"
-        info += (x["name"]+"\nStart: "+str(d1) +
-                 "\nEnd: "+str(d2)+"\nRegister: "+x["url"] + "\n\n")
+        info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
+                 "\nEnd: "+str(d2)+"hr\n")
     update.message.reply_text(info)
 
 
@@ -116,10 +120,11 @@ def hackerearth(update, context):
         start = x["start_time"]
         end = x["end_time"]
         d1 = datetime_from_utc_to_local(start)
-        d2 = datetime_from_utc_to_local(end)
+        d4 = utc2local(start)
+        d2 = utc2local(end)
         new_format = "%Y-%m-%d"
-        info += (x["name"]+"\nStart: "+str(d1) +
-                 "\nEnd: "+str(d2)+"\nRegister: "+x["url"] + "\n\n")
+        info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
+                 "\nEnd: "+str(d2)+"hr\n")
     update.message.reply_text(info)
 
 
@@ -136,10 +141,11 @@ def all_contest(update, context):
                 start = x["start_time"]
                 end = x["end_time"]
                 d1 = datetime_from_utc_to_local(start)
-                d2 = datetime_from_utc_to_local(end)
+                d4 = utc2local(start)
+                d2 = utc2local(end)
                 new_format = "%Y-%m-%d"
-                info += (x["name"]+"\nStart: "+str(d1) +
-                         "\nEnd: "+str(d2)+"\nRegister: "+x["url"] + "\n\n")
+                info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
+                         "\nEnd: "+str(d2)+"hr\n")
         update.message.reply_text(info)
 
 
