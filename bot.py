@@ -52,7 +52,7 @@ def codeforces(update, context):
         d1 = datetime_from_utc_to_local(start)
         d4 = utc2local(start)
         d2 = utc2local(end)
-        print(diffInTime(d4, d2))
+        print(diffInTime(start, end))
         new_format = "%Y-%m-%d"
         info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
                  "\nDuration: "+str(2)+"hr\n")
