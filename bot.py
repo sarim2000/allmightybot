@@ -29,18 +29,7 @@ def datetime_from_utc_to_local(utc_datetime):
 
 def utc2local(utc):
     print(utc)
-    return arrow.get(utc).to(('Asia/Kolkata')).format()
-
-
-def diffInTime(time1, time2):
-    fmt = '%Y-%m-%dT%H:%M:%S.%fZ'
-    t1 = datetime.strptime(time1, fmt)
-    t2 = datetime.strptime(time2, fmt)
-    s1 = t1.strftime("%H")
-    s2 = t2.strftime("%H")
-    duration = int(s2) - int(s1)
-    duration_in_s = duration.total_seconds()
-    return divmod(duration_in_s, 3600)[0]
+    return arrow.get(utc).to(('Asia/Kolkata')).format('HH:mm:ss ZZ')
 
 
 def codeforces(update, context):
@@ -53,9 +42,10 @@ def codeforces(update, context):
         d1 = datetime_from_utc_to_local(start)
         d4 = utc2local(start)
         d2 = utc2local(end)
+        print(diffInTime(start, end))
         new_format = "%Y-%m-%d"
-        info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + (d4.strftime("%-I %p %S")) +
-                 "\nDuration: "+str(2)+"hr\n")
+        info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
+                 "\nEnd: "+str(d2)+"hr\n")
     update.message.reply_text(info, parse_mode=ParseMode.HTML)
 
 
