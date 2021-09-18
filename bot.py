@@ -33,11 +33,12 @@ def utc2local(utc):
 
 
 def diffInTime(time1, time2):
-    fmt = '%H:%M:%S.%fZ'
+    fmt = '%Y-%m-%dT%H:%M:%S.%fZ'
     t1 = datetime.strptime(time1, fmt)
     t2 = datetime.strptime(time2, fmt)
-
-    duration = t2 - t1
+    s1 = t1.strftime("%H")
+    s2 = t2.strftime("%H")
+    duration = s2 - s1
     duration_in_s = duration.total_seconds()
     return divmod(duration_in_s, 3600)[0]
 
