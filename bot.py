@@ -1,3 +1,4 @@
+from telegram import ParseMode
 import arrow
 import time
 from datetime import datetime, tzinfo, timedelta, timezone
@@ -43,11 +44,10 @@ def codeforces(update, context):
         print(d1.strftime("%A %d. %B %Y"))
         d4 = utc2local(start)
         d2 = utc2local(end)
-
         new_format = "%Y-%m-%d"
         info += ("<a href="+x["url"]+">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
                  "\nDuration: "+str(2)+"hr\n")
-    update.message.reply_text(info)
+    update.message.reply_text(info, parse_mode=ParseMode.HTML)
 
 
 def codechef(update, context):
