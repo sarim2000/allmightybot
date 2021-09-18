@@ -27,29 +27,11 @@ def datetime_from_utc_to_local(utc_datetime):
     return utc
 
 
-class Zone(tzinfo):
-    def __init__(self, offset, isdst, name):
-        self.offset = offset
-        self.isdst = isdst
-        self.name = name
-
-    def utcoffset(self, dt):
-        return timedelta(hours=self.offset) + self.dst(dt)
-
-    def dst(self, dt):
-        return timedelta(hours=1) if self.isdst else timedelta(0)
-
-    def tzname(self, dt):
-        return self.name
-
-
-GMT = Zone(0, False, 'GMT')
-
-
 def utc2local(utc):
-    epoch = time.mktime(utc.timetuple())
-    offset = datetime.fromtimestamp(epoch) - datetime.utcfromtimestamp(epoch)
-    return utc.astimezone(datetime.timezone(offset))
+    d = datetime.strptime(utc, "%Y-%m-%d %H:%M:%S")
+    d = d.replace(tzinfo=datetime.timezone.utc)
+    d = d.astimezone()  # Convert it to your local timezone (still aware)
+    return d
 
 
 def codeforces(update, context):
@@ -60,11 +42,11 @@ def codeforces(update, context):
         start = x["start_time"]
         end = x["end_time"]
         d1 = datetime_from_utc_to_local(start)
-        d1 = d1.replace(tzinfo=GMT)
+        d4 = utc2local(d1)
         d2 = datetime_from_utc_to_local(end)
 
         new_format = "%Y-%m-%d"
-        info += (x["name"]+"\nStart: "+str(d1) +
+        info += (x["name"]+"\nStart: "+str(d4) +
                  "\nEnd: "+str(d2)+"\nRegister: "+x["url"] + "\n\n")
     update.message.reply_text(info)
 
