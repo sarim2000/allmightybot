@@ -1,5 +1,6 @@
 
 
+from dateutil import tz
 import time
 from datetime import datetime, tzinfo, timedelta, timezone
 import logging
@@ -27,10 +28,14 @@ def datetime_from_utc_to_local(utc_datetime):
     return utc
 
 
+from_zone = tz.tzutc()
+to_zone = tz.tzlocal()
+
+
 def utc2local(utc):
-    epoch = time.mktime(utc.timetuple())
-    offset = datetime.fromtimestamp(epoch) - datetime.utcfromtimestamp(epoch)
-    return utc.astimezone(timezone(offset))
+    utc1 = utc.replace(tzinfo=from_zone)
+    central = utc.astimezone(to_zone)
+    return central
 
 
 def codeforces(update, context):
