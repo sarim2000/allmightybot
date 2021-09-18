@@ -31,11 +31,6 @@ def utc2local(utc):
     return arrow.get(utc).to(('Asia/Kolkata')).format('HH:mm:ss ZZ')
 
 
-def diffinTime(time1, time2):
-    FMT = '%H'
-    tdelta = datetime.strptime(time2, FMT) - datetime.strptime(time1, FMT)
-
-
 def codeforces(update, context):
     response = requests.get('https://kontests.net/api/v1/codeforces.json')
     data = response.json()
@@ -48,10 +43,10 @@ def codeforces(update, context):
         print(d1.strftime("%A %d. %B %Y"))
         d4 = utc2local(start)
         d2 = utc2local(end)
-        diff = diffinTime(d4, d2)
+
         new_format = "%Y-%m-%d"
         info += ("<a href="+x["url"]+">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
-                 "\nDuration: "+str(diff)+"hr\n")
+                 "\nDuration: "+str(2)+"hr\n")
     update.message.reply_text(info)
 
 
