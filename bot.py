@@ -28,7 +28,7 @@ def datetime_from_utc_to_local(utc_datetime):
 
 def utc2local(utc):
     print(utc)
-    return arrow.Arrow.strptime(str(utc), '%Y-%m-%dT%H:%M:%S.%fZ').to(tz.gettz('Asia/Kolkata'))
+    return arrow.Arrow.strptime(str(utc), '%Y-%m-%dT%H:%M:%S.%fZ').to(('Asia/Kolkata'))
 
 
 def codeforces(update, context):
