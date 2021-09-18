@@ -29,7 +29,7 @@ def datetime_from_utc_to_local(utc_datetime):
 
 def utc2local(utc):
     print(utc)
-    return arrow.get(utc).to(('Asia/Kolkata')).format('%-I %p %S')
+    return arrow.get(utc).to(('Asia/Kolkata')).format()
 
 
 def diffInTime(time1, time2):
@@ -54,7 +54,7 @@ def codeforces(update, context):
         d4 = utc2local(start)
         d2 = utc2local(end)
         new_format = "%Y-%m-%d"
-        info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
+        info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4.strftime("%-I %p %S")) +
                  "\nDuration: "+str(2)+"hr\n")
     update.message.reply_text(info, parse_mode=ParseMode.HTML)
 
