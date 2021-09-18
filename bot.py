@@ -39,7 +39,7 @@ def codeforces(update, context):
         start = x["start_time"]
         end = x["end_time"]
         d1 = datetime.strptime(start, "%Y-%m-%dT%H:%M:%S.%fZ")
-        print(d.strftime("%A %d. %B %Y"))
+        print(d1.strftime("%A %d. %B %Y"))
         d4 = utc2local(start)
         d2 = utc2local(end)
         new_format = "%Y-%m-%d"
