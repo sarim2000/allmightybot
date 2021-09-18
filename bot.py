@@ -30,7 +30,7 @@ def datetime_from_utc_to_local(utc_datetime):
 def utc2local(utc):
     epoch = time.mktime(utc.timetuple())
     offset = datetime.fromtimestamp(epoch) - datetime.utcfromtimestamp(epoch)
-    return utc + offset
+    return utc.astimezone(datetime.timezone(offset))
 
 
 def codeforces(update, context):
