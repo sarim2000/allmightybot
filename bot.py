@@ -45,8 +45,8 @@ def codeforces(update, context):
         d4 = utc2local(start)
         d2 = utc2local(end)
         new_format = "%Y-%m-%d"
-        info += ("<a href="+x["url"]+">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
-                 "\nDuration: "+str(2)+"hr\n")
+        info += ("<a href="+x["url"]+">"+x["name"]+"</a>"+"<p>\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
+                 "\nDuration: "+str(2)+"hr\n</p>")
     update.message.reply_text(info, parse_mode=ParseMode.HTML)
 
 
