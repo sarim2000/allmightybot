@@ -29,7 +29,7 @@ def datetime_from_utc_to_local(utc_datetime):
 
 def utc2local(utc):
     print(utc)
-    return arrow.get(utc).to(('Asia/Kolkata')).format('HH:mm:ss ZZ')
+    return arrow.get(utc).to(('Asia/Kolkata')).format('%-I %p %S')
 
 
 def diffInTime(time1, time2):
@@ -38,7 +38,7 @@ def diffInTime(time1, time2):
     t2 = datetime.strptime(time2, fmt)
     s1 = t1.strftime("%H")
     s2 = t2.strftime("%H")
-    duration = s2 - s1
+    duration = int(s2) - int(s1)
     duration_in_s = duration.total_seconds()
     return divmod(duration_in_s, 3600)[0]
 
@@ -53,7 +53,6 @@ def codeforces(update, context):
         d1 = datetime_from_utc_to_local(start)
         d4 = utc2local(start)
         d2 = utc2local(end)
-        print(diffInTime(start, end))
         new_format = "%Y-%m-%d"
         info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
                  "\nDuration: "+str(2)+"hr\n")
