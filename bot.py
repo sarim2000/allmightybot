@@ -1,7 +1,7 @@
 
 
 import time
-from datetime import datetime, tzinfo, timedelta
+from datetime import datetime, tzinfo, timedelta, timezone
 import logging
 import json
 import Constants as keys
@@ -28,7 +28,7 @@ def datetime_from_utc_to_local(utc_datetime):
 
 
 def utc2local(utc):
-    d = datetime.strptime((utc), "%Y-%m-%dT%H:%M:%S.%fZ")
+    d = datetime.strptime((utc),  "%Y-%m-%d %H:%M:%S")
     d = d.replace(tzinfo=datetime.timezone.utc)
     d = d.astimezone()  # Convert it to your local timezone (still aware)
     return d
@@ -42,7 +42,7 @@ def codeforces(update, context):
         start = x["start_time"]
         end = x["end_time"]
         d1 = datetime_from_utc_to_local(start)
-        d4 = utc2local(start)
+        d4 = utc2local(d1)
         d2 = datetime_from_utc_to_local(end)
 
         new_format = "%Y-%m-%d"
