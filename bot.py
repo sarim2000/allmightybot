@@ -22,15 +22,15 @@ def help_command(update, context):
     update.message.reply_text('Hello')
 
 
-def handle_messages(update, context):
-    text = str(update.message.text).lower()
-    response = R.sample_responses(text)
-    update.message.reply_text(response)
-
-
 def datetime_from_utc_to_local(utc_datetime):
     utc = datetime.strptime(utc_datetime, "%Y-%m-%dT%H:%M:%S.%fZ")
     return utc
+
+
+def utc2local(utc):
+    epoch = time.mktime(utc.timetuple())
+    offset = datetime.fromtimestamp(epoch) - datetime.utcfromtimestamp(epoch)
+    return utc + offset
 
 
 def codeforces(update, context):
@@ -41,10 +41,12 @@ def codeforces(update, context):
         start = x["start_time"]
         end = x["end_time"]
         d1 = datetime_from_utc_to_local(start)
+        now_d1 = utc2local(d1)
         d2 = datetime_from_utc_to_local(end)
+        now_d2 = utc2local(d2)
         new_format = "%Y-%m-%d"
-        info += (x["name"]+"\nStart: "+str(d1) +
-                 "\nEnd: "+str(d2)+"\nRegister: "+x["url"] + "\n\n")
+        info += (x["name"]+"\nStart: "+str(now_d1) +
+                 "\nEnd: "+str(now_d2)+"\nRegister: "+x["url"] + "\n\n")
     update.message.reply_text(info)
 
 
@@ -132,7 +134,7 @@ def all_contest(update, context):
         response = requests.get('https://kontests.net/api/v1/'+i+".json")
         data = response.json()
         for x in data:
-            if (x["in_24_hours"]):
+            if (x["in_24_hours"] == "Yes"):
                 start = x["start_time"]
                 end = x["end_time"]
                 d1 = datetime_from_utc_to_local(start)
