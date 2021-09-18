@@ -1,5 +1,3 @@
-
-
 import arrow
 import time
 from datetime import datetime, tzinfo, timedelta, timezone
@@ -29,7 +27,8 @@ def datetime_from_utc_to_local(utc_datetime):
 
 
 def utc2local(utc):
-    return arrow.get(utc).to('local').format()
+    print(utc)
+    return arrow.get(utc).to('Asia/India').format()
 
 
 def codeforces(update, context):
