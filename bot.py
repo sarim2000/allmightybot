@@ -38,7 +38,7 @@ def codeforces(update, context):
     for x in data:
         start = x["start_time"]
         end = x["end_time"]
-        d1 = datetime.strptime(start, "%Y-%m-%dT")
+        d1 = datetime.strptime(start, "%Y-%m-%dT%H:%M:%S.%fZ")
         print(d1.weekday())
         d4 = utc2local(start)
         d2 = utc2local(end)
