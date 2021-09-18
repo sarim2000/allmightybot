@@ -28,7 +28,7 @@ def datetime_from_utc_to_local(utc_datetime):
 
 
 def utc2local(utc):
-    d = datetime.strptime(utc, "%Y-%m-%d %H:%M:%S")
+    d = datetime.strptime(str(utc), "%Y-%m-%d %H:%M:%S")
     d = d.replace(tzinfo=datetime.timezone.utc)
     d = d.astimezone()  # Convert it to your local timezone (still aware)
     return d
