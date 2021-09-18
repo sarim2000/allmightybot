@@ -33,7 +33,7 @@ def utc2local(utc):
 
 
 def diffInTime(time1, time2):
-    fmt = '%H:%M:%S:%fZ'
+    fmt = '%H:%M:%S.%fZ'
     t1 = datetime.strptime(time1, fmt)
     t2 = datetime.strptime(time2, fmt)
 
