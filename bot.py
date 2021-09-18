@@ -43,7 +43,7 @@ def codeforces(update, context):
         d4 = utc2local(start)
         d2 = utc2local(end)
         new_format = "%Y-%m-%d"
-        info += (x["name"]+"\nStart: "+str(d1) + " " + str(d4) +
+        info += (x["name"]+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + " " + str(d4) +
                  "\nEnd: "+str(d2)+"\nRegister: "+x["url"] + "\n\n")
     update.message.reply_text(info)
 
