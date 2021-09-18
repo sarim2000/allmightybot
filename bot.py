@@ -34,7 +34,10 @@ def utc2local(utc):
 
 def diffInTime(time1, time2):
     fmt = '%H:%M:%S'
-    duration = time1.strptime(fmt) - time2.strptime(fmt)
+    t1 = datetime.strptime(time1, fmt)
+    t2 = datetime.strptime(time2, fmt)
+
+    duration = t2 - t1
     duration_in_s = duration.total_seconds()
     return divmod(duration_in_s, 3600)[0]
 
@@ -47,7 +50,6 @@ def codeforces(update, context):
         start = x["start_time"]
         end = x["end_time"]
         d1 = datetime_from_utc_to_local(start)
-
         d4 = utc2local(start)
         d2 = utc2local(end)
         print(diffInTime(d4, d2))
