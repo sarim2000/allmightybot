@@ -61,7 +61,7 @@ def codechef(update, context):
         new_format = "%Y-%m-%d"
         info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
                  "\nEnd: "+str(d2)+"hr\n")
-    update.message.reply_text(info)
+    update.message.reply_text(info, parse_mode=ParseMode.HTML)
 
 
 def leetcode(update, context):
@@ -77,7 +77,7 @@ def leetcode(update, context):
         new_format = "%Y-%m-%d"
         info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
                  "\nEnd: "+str(d2)+"hr\n")
-    update.message.reply_text(info)
+    update.message.reply_text(info, parse_mode=ParseMode.HTML)
 
 
 def kickstart(update, context):
@@ -93,7 +93,7 @@ def kickstart(update, context):
         new_format = "%Y-%m-%d"
         info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
                  "\nEnd: "+str(d2)+"hr\n")
-    update.message.reply_text(info)
+    update.message.reply_text(info, parse_mode=ParseMode.HTML)
 
 
 def atcoder(update, context):
@@ -109,7 +109,7 @@ def atcoder(update, context):
         new_format = "%Y-%m-%d"
         info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
                  "\nEnd: "+str(d2)+"hr\n")
-    update.message.reply_text(info)
+    update.message.reply_text(info, parse_mode=ParseMode.HTML)
 
 
 def hackerearth(update, context):
@@ -125,7 +125,7 @@ def hackerearth(update, context):
         new_format = "%Y-%m-%d"
         info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
                  "\nEnd: "+str(d2)+"hr\n")
-    update.message.reply_text(info)
+    update.message.reply_text(info, parse_mode=ParseMode.HTML)
 
 
 def all_contest(update, context):
@@ -146,7 +146,7 @@ def all_contest(update, context):
                 new_format = "%Y-%m-%d"
                 info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
                          "\nEnd: "+str(d2)+"hr\n")
-        update.message.reply_text(info)
+        update.message.reply_text(info, parse_mode=ParseMode.HTML)
 
 
 def error_handler(update, context):
