@@ -28,7 +28,7 @@ def datetime_from_utc_to_local(utc_datetime):
 
 def utc2local(utc):
     print(utc)
-    return arrow.get(utc).to(('Asia/Kolkata')).format('YYYY-MM-DD HH:mm:ss ZZ')
+    return arrow.get(utc).to(('Asia/Kolkata')).format('%A %d. %B %Y HH:mm:ss ZZ')
 
 
 def codeforces(update, context):
@@ -38,8 +38,7 @@ def codeforces(update, context):
     for x in data:
         start = x["start_time"]
         end = x["end_time"]
-        d1 = datetime.strptime(start, "%Y-%m-%dT%H:%M:%S.%fZ")
-        print(d1.strftime("%A %d. %B %Y"))
+        d1 = datetime_from_utc_to_local(start)
         d4 = utc2local(start)
         d2 = utc2local(end)
         new_format = "%Y-%m-%d"
