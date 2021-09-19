@@ -1,2 +1,7 @@
 ### allmightybot
-## "My work is to remind my fellow programmers of ALL competetions time in IST for ease" - AllMightyBot.
+## "My sole purpose is to remind my fellow programmers of ALL competition time in IST." - AllMightyBot.
+How to use the AllMightyBot?
+/start to get intro of the allmightybot.
+/help to get the contest supported by Him.
+
+## THATS IT. 😅 but for now, will keep coming with new updates for All Mighty.
