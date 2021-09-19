@@ -4,4 +4,4 @@ How to use the AllMightyBot?<br>
 /start to get intro of the allmightybot.<br>
 /help to get the contest supported by Him.
 
-## THATS IT. 😅 but for now, will keep coming with new updates for All Mighty.
+## THATS IT 😅 but for NOW, will keep coming with new updates for All Mighty 👊‍
