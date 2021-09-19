@@ -9,17 +9,10 @@ from telegram.ext import *
 import requests
 print('Bot started')
 
-
-def start_command(update, context):
-    update.message.reply_text("Type")
-
-
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
 
-
-def help_command(update, context):
-    update.message.reply_text('Hello')
+###########################################HELPER FUNCTIONS#####################################
 
 
 def datetime_from_utc_to_local(utc_datetime):
@@ -30,6 +23,18 @@ def datetime_from_utc_to_local(utc_datetime):
 def utc2local(utc):
     print(utc)
     return arrow.get(utc).to(('Asia/Kolkata')).format('HH:mm:ss ZZ')
+
+###########################################BOT FUNCTIONS########################################
+
+
+def start_command(update, context):
+    update.message.reply_text(
+        "I am the all mighty watcher 💪. ‍My work is to simply remind you of coding competetion(basically all) schedules in IST.\n Do /help for my commands.")
+
+
+def help_command(update, context):
+    update.message.reply_text(
+        'How to use me?\n1. /codeforces\n2. /atcoder\n3. /codechef\n4. /kickstart\n5. /leetcode\n6. /all')
 
 
 def codeforces(update, context):
@@ -44,7 +49,7 @@ def codeforces(update, context):
         d2 = utc2local(end)
         new_format = "%Y-%m-%d"
         info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
-                 "\nEnd: "+str(d2)+"hr\n")
+                 "\nEnd: "+str(d2)+"hr\n\n")
     update.message.reply_text(
         info, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
 
@@ -61,7 +66,7 @@ def codechef(update, context):
         d2 = utc2local(end)
         new_format = "%Y-%m-%d"
         info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
-                 "\nEnd: "+str(d2)+"hr\n")
+                 "\nEnd: "+str(d2)+"hr\n\n")
     update.message.reply_text(
         info, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
 
@@ -78,7 +83,7 @@ def leetcode(update, context):
         d2 = utc2local(end)
         new_format = "%Y-%m-%d"
         info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
-                 "\nEnd: "+str(d2)+"hr\n")
+                 "\nEnd: "+str(d2)+"hr\n\n")
     update.message.reply_text(
         info, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
 
@@ -95,7 +100,7 @@ def kickstart(update, context):
         d2 = utc2local(end)
         new_format = "%Y-%m-%d"
         info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
-                 "\nEnd: "+str(d2)+"hr\n")
+                 "\nEnd: "+str(d2)+"hr\n\n")
     update.message.reply_text(
         info, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
 
@@ -112,7 +117,7 @@ def atcoder(update, context):
         d2 = utc2local(end)
         new_format = "%Y-%m-%d"
         info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
-                 "\nEnd: "+str(d2)+"hr\n")
+                 "\nEnd: "+str(d2)+"hr\n\n")
     update.message.reply_text(
         info, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
 
@@ -129,7 +134,7 @@ def hackerearth(update, context):
         d2 = utc2local(end)
         new_format = "%Y-%m-%d"
         info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
-                 "\nEnd: "+str(d2)+"hr\n")
+                 "\nEnd: "+str(d2)+"hr\n\n")
     update.message.reply_text(
         info, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
 
@@ -152,13 +157,16 @@ def all_contest(update, context):
                 d2 = utc2local(end)
                 new_format = "%Y-%m-%d"
                 info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
-                         "\nEnd: "+str(d2)+"hr\n")
+                         "\nEnd: "+str(d2)+"hr\n\n")
     update.message.reply_text(
         info, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
 
 
 def error_handler(update, context):
     print(context.error)
+
+
+###########################################BOT FUNCTIONS########################################
 
 
 def main():
