@@ -135,11 +135,11 @@ def hackerearth(update, context):
 
 
 def all_contest(update, context):
+    info = ""
     contest_name = ["codeforces", "at_coder",
                     "code_chef", "leet_code", "kick_start"]
     for i in contest_name:
         print(i)
-        info = ""
         response = requests.get('https://kontests.net/api/v1/'+i+".json")
         data = response.json()
         for x in data:
@@ -153,8 +153,8 @@ def all_contest(update, context):
                 new_format = "%Y-%m-%d"
                 info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
                          "\nEnd: "+str(d2)+"hr\n")
-        update.message.reply_text(
-            info, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
+    update.message.reply_text(
+        info, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
 
 
 def error_handler(update, context):
