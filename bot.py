@@ -45,7 +45,8 @@ def codeforces(update, context):
         new_format = "%Y-%m-%d"
         info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
                  "\nEnd: "+str(d2)+"hr\n")
-    update.message.reply_text(info, parse_mode=ParseMode.HTML)
+    update.message.reply_text(
+        info, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
 
 
 def codechef(update, context):
@@ -61,7 +62,8 @@ def codechef(update, context):
         new_format = "%Y-%m-%d"
         info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
                  "\nEnd: "+str(d2)+"hr\n")
-    update.message.reply_text(info, parse_mode=ParseMode.HTML)
+    update.message.reply_text(
+        info, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
 
 
 def leetcode(update, context):
@@ -77,7 +79,8 @@ def leetcode(update, context):
         new_format = "%Y-%m-%d"
         info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
                  "\nEnd: "+str(d2)+"hr\n")
-    update.message.reply_text(info, parse_mode=ParseMode.HTML)
+    update.message.reply_text(
+        info, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
 
 
 def kickstart(update, context):
@@ -93,7 +96,8 @@ def kickstart(update, context):
         new_format = "%Y-%m-%d"
         info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
                  "\nEnd: "+str(d2)+"hr\n")
-    update.message.reply_text(info, parse_mode=ParseMode.HTML)
+    update.message.reply_text(
+        info, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
 
 
 def atcoder(update, context):
@@ -109,7 +113,8 @@ def atcoder(update, context):
         new_format = "%Y-%m-%d"
         info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
                  "\nEnd: "+str(d2)+"hr\n")
-    update.message.reply_text(info, parse_mode=ParseMode.HTML)
+    update.message.reply_text(
+        info, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
 
 
 def hackerearth(update, context):
@@ -125,7 +130,8 @@ def hackerearth(update, context):
         new_format = "%Y-%m-%d"
         info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
                  "\nEnd: "+str(d2)+"hr\n")
-    update.message.reply_text(info, parse_mode=ParseMode.HTML)
+    update.message.reply_text(
+        info, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
 
 
 def all_contest(update, context):
@@ -137,6 +143,7 @@ def all_contest(update, context):
         response = requests.get('https://kontests.net/api/v1/'+i+".json")
         data = response.json()
         for x in data:
+            print(x["in_24_hours"])
             if (x["in_24_hours"] == "Yes"):
                 start = x["start_time"]
                 end = x["end_time"]
@@ -146,7 +153,8 @@ def all_contest(update, context):
                 new_format = "%Y-%m-%d"
                 info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
                          "\nEnd: "+str(d2)+"hr\n")
-        update.message.reply_text(info, parse_mode=ParseMode.HTML)
+        update.message.reply_text(
+            info, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
 
 
 def error_handler(update, context):
