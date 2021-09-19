@@ -138,8 +138,8 @@ def all_contest(update, context):
     contest_name = ["codeforces", "at_coder",
                     "code_chef", "leet_code", "kick_start"]
     for i in contest_name:
+        print(i)
         info = ""
-
         response = requests.get('https://kontests.net/api/v1/'+i+".json")
         data = response.json()
         for x in data:
