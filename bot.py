@@ -58,15 +58,17 @@ def codechef(update, context):
     response = requests.get('https://kontests.net/api/v1/code_chef.json')
     data = response.json()
     info = ""
+    contains = ["Rated", "SnackDown", "Lunchtime", "Cook-Off"]
     for x in data:
-        start = x["start_time"]
-        end = x["end_time"]
-        d1 = datetime_from_utc_to_local(start)
-        d4 = utc2local(start)
-        d2 = utc2local(end)
-        new_format = "%Y-%m-%d"
-        info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
-                 "\nEnd: "+str(d2)+"hr\n\n")
+        if any(word in contains for word in x["name"]):
+            start = x["start_time"]
+            end = x["end_time"]
+            d1 = datetime_from_utc_to_local(start)
+            d4 = utc2local(start)
+            d2 = utc2local(end)
+            new_format = "%Y-%m-%d"
+            info += ("<a href=\""+x["url"]+"\">"+x["name"]+"</a>"+"\nStart: "+(d1.strftime("%A %d. %B %Y")) + "  " + str(d4) +
+                     "\nEnd: "+str(d2)+"hr\n\n")
     update.message.reply_text(
         info, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
 
